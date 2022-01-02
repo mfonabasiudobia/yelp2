@@ -171,7 +171,7 @@ const Dashboard = ({gems,cultures,categories}) => {
 
       <div className="page-wrapper">
 
-      {JSON.stringify(userData)}
+    
 
 
         <header className="main-header position-relative" >
