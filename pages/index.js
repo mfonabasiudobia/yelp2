@@ -171,7 +171,7 @@ const Dashboard = ({gems,cultures,categories}) => {
 
       <div className="page-wrapper">
 
-    
+
 
 
         <header className="main-header position-relative" >

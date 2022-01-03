@@ -41,7 +41,7 @@ const Login = () => {
 
       
 
-      if(res.data.data.active === 0){
+      if(res.data.data.active == 0){
         router.push("/otp-verification");
       }else{
         router.push("/");
