@@ -2,7 +2,7 @@ import {useState,useEffect,useContext} from 'react';
 import Footer from "/components/footer";
 import axios  from "/helpers/axios";
 import Header from "/components/header";
-import Sidebar from "/components/admins/SideBar";
+import Sidebar from "/components/AdminSidebar";
 import Header2 from "/components/dashboard/Header";
 import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
