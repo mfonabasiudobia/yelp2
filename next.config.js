@@ -1,6 +1,2 @@
-module.exports = {
-  images: {
-    domain: "experimental-serverless-trace",
-  }
-}
+module.exports = {}
 
