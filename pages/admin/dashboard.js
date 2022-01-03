@@ -27,20 +27,20 @@ const Dashboard = ({businesses}) => {
    const [action, setAction] = useState({id:0,action:''});
    const router = useRouter();
 
-useEffect(() => {
-  
-   
-    setBusiness(businesses)
+    useEffect(() => {
       
-     var page = [];
-     for (var i = 0; i <=  Math.ceil(businesses.length/10) - 1 ; i++) {
-              page.push(i)
-     }
-      
-      setPages(page);
-   
+       
+        setBusiness(businesses)
+          
+         var page = [];
+         for (var i = 0; i <=  Math.ceil(businesses.length/10) - 1 ; i++) {
+                  page.push(i)
+         }
+          
+          setPages(page);
+       
 
-},[]);
+    },[]);
 
 
   const approveBusiness =  (action, id) => {
