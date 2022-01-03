@@ -7,7 +7,7 @@ export const isUserLoggedIn = (gssp,redirect) => {
     const userData = cookies.userData
 
      if (userData != null) {
-        if (JSON.parse(userData).status === true) {
+        if (JSON.parse(userData).status === true && JSON.parse(user).data.active == 1) {
               
               return {
               redirect: {
@@ -39,7 +39,7 @@ export const isUserNotLoggedIn = (gssp,redirect) => {
     const userData = cookies.userData
 
      if (userData != null) {
-        if (JSON.parse(userData).status === true) {
+        if (JSON.parse(userData).status === true && JSON.parse(user).data.active == 1) {
               return await gssp(context);
         }   
       }
