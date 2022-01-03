@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domain: "res.cloudinary.com",
+    domain: "experimental-serverless-trace",
   }
 }
 
