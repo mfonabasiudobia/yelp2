@@ -40,7 +40,6 @@ const Login = () => {
       setUserData(JSON.parse(JSON.stringify(res.data)).data);
 
       
-
       if(res.data.data.active == 0){
         router.push("/otp-verification");
       }else{

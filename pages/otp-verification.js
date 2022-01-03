@@ -21,7 +21,7 @@ const VerifyAccount = (props) => {
   const [fifthCode,setFifthCode] = useState("");
   const router = useRouter();
 
-  const {setId,userData,isLoggedIn,loading,setLoading,setData,data,setIsLoggedIn} = useContext(UserContext);
+  const {setId,userData,isLoggedIn,loading,setLoading,setData,data,setIsLoggedIn,setUserData} = useContext(UserContext);
 
 
 
@@ -71,7 +71,12 @@ const submitVerificationCode = (e) => {
     }).then((res) => {
        if(res.data.status == true){
 
-          // toast.success("Verification Successful",{theme: "colored"});
+
+           let myData = Cookie.get('userData');
+           myData = JSON.parse(myData);
+
+          Cookie.set("userData",JSON.stringify({...myData,data: {...userData,active:1}}))
+
           setIsLoggedIn(true)
           router.push("/");
 
@@ -93,6 +98,8 @@ const submitVerificationCode = (e) => {
     }); 
 
 }
+
+
 
 
   return (

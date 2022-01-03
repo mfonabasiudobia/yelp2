@@ -53,11 +53,8 @@ const Home = () => {
        Cookie.set('userData',JSON.stringify(res.data));
 
        router.replace("/otp-verification");
-       
+
        setUserData(JSON.parse(JSON.stringify(res.data)).data);
-
-       
-
 
      }
 

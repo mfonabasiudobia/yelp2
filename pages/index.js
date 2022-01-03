@@ -131,7 +131,6 @@ const Dashboard = ({gems,cultures,categories}) => {
 
   return (
     <>
-
      <Offcanvas show={show} onHide={() => setShow(false)}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="pc">Houston Culture</Offcanvas.Title>
