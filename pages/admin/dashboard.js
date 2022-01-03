@@ -15,38 +15,56 @@ import {UserContext} from "/components/UserContext";
 import {isAdminNotLoggedIn} from "/protected/requireAuthentication";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Cookie from "js-cookie";
 
 
-const Dashboard = ({businesses}) => {
+const Dashboard = () => {
 
    const {setId,adminData,isAdminLoggedIn,loading,setLoading,setData,data,setIsAdminLoggedIn} = useContext(UserContext);
    const [currentPage,setCurrentPage] = useState(0);
    const [pages,setPages] = useState([]);
+   const [type,setType] = useState("PENDING");
    const [business, setBusiness] = useState("");
    const [show, setShow] = useState(false);
    const [action, setAction] = useState({id:0,action:''});
    const router = useRouter();
 
-    useEffect(() => {
-      
-       
-        setBusiness(businesses)
-          
-         var page = [];
-         for (var i = 0; i <=  Math.ceil(businesses.length/10) - 1 ; i++) {
-                  page.push(i)
-         }
-          
-          setPages(page);
-       
 
-    },[]);
+    useEffect(() => {
+
+      if(show == false){
+              axios({
+          method: "get",
+          url: `v1/admin/business?type=${type}`,
+          headers: {
+              'Authorization':`Bearer ${adminData.token}`
+              }
+         }).then((res) => {
+
+            setBusiness(res.data.data)
+          
+             var page = [];
+             for (var i = 0; i <=  Math.ceil(res.data.data.length/10) - 1 ; i++) {
+                      page.push(i);
+             }
+            
+            setPages(page);
+
+          }).catch((err) => {
+              Cookie.remove("adminData");
+              router.push("/admin");
+          });
+
+      }
+
+
+    },[show,type]);
 
 
   const approveBusiness =  (action, id) => {
     
-
     setLoading(true)
+
    axios({
         method: "POST",
         url: "v1/admin/business/",
@@ -57,7 +75,11 @@ const Dashboard = ({businesses}) => {
         }).then((res) => {
           
 
-            toast.success("Business has been Approved",{theme: "colored"});
+            if(action == "DENY"){
+              toast.success("Business has been Rejected",{theme: "colored"});
+            }else{
+              toast.success("Business has been Approved",{theme: "colored"});
+            }
 
             setLoading(false);
 
@@ -88,6 +110,7 @@ const Dashboard = ({businesses}) => {
 
 
    return (<>
+
     <div className="page-wrapper">
    
    <Header />
@@ -108,17 +131,13 @@ const Dashboard = ({businesses}) => {
             <div className="d-md-flex">
              <div className="pc  fs-21 fw-700 me-3 mb-2"> Approve Business </div>
 
-              <form method="GET" action="/admin/dashboard">   
+              <form>   
                <div className="input-group input-group-md d-flex position-relative">             
-                 <select className="form-select rounded-0  text-secondary fs-15" name="type" defaultValue={router.query.type}
-                 >
+                 <select className="form-select rounded-0  text-secondary fs-15" defaultValue={type} onChange={(e) => setType(e.target.value)}>
                     <option value="PENDING">Pending</option>
                     <option value="APPROVED">Approved</option>
                     <option value="DECLINED">Declined</option>
                  </select>
-                <button type="submit" className="input-group-text btn-primary-color-bg text-white rounded-0 border-0 fw-300">
-                  &nbsp; <i className="fas fa-search"></i>
-                </button>
                 </div>
               </form>
             </div>
@@ -146,11 +165,11 @@ const Dashboard = ({businesses}) => {
                           <td>{item.phone_number}</td>  
                           <td>{item.street_address}</td> 
 
-                          <td>{router.query.type == "PENDING" || router.query.type == undefined ? <span className='fw-600 fw-13 badge badge-pill badge-warning'>PENDING</span> : router.query.type == "APPROVED" ? <span className='fw-600 fw-13 badge badge-pill badge-success'>{router.query.type}</span> : <span className='fw-600 fw-13 badge badge-pill badge-danger'>{router.query.type}</span> }</td> 
+                          <td>{type == "PENDING"  ? <span className='fw-600 fw-13 badge rounded-pill bg-warning'>PENDING</span> : type == "APPROVED" ? <span className='fw-600 fw-13 badge rounded-pill bg-success'>{type}</span> : <span className='fw-600 fw-13 badge rounded-pill bg-danger'>{type}</span> }</td> 
 
                          <td>  
 
-                         {router.query.type == "PENDING" || router.query.type == undefined ? <> 
+                         {type == "PENDING" || type == undefined ? <> 
                          <button className="btn btn-sm btn-success mb-2" onClick={() => { setShow(!show); setAction({id: item.id,action:'APPROVE'})} }>Approve</button> &nbsp;
 
                          <button className="btn btn-sm btn-danger mb-2" onClick={() => { setShow(!show); setAction({id: item.id,action:'DENY'})} }>Reject</button>  </> : null} &nbsp;
@@ -245,12 +264,10 @@ export const getServerSideProps = isAdminNotLoggedIn(async context => {
     headers: {
         'Authorization':`Bearer ${JSON.parse(context.req.cookies.adminData).data.token}`
         }
-   });
+   }).catch(() => {});
 
   return {
-    props: {
-       businesses : business.data.data
-    }
+    props: {    }
   };
 
 
