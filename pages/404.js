@@ -62,7 +62,7 @@ const Login = () => {
       <div className="row d-flex justify-content-center mt-4">
       <div className="col-md-5 d-flex flex-column justify-content-center align-items-center">
 
-       <Image src='/images/something-lost.png' height='200' width='300' priority />
+       <Image src='/images/something-lost.png' height='200' width='300' priority alt="" />
 
         <div className="text-center card card-body mt-3">
           <h2 className="fs-22 pc fw-900 mb-2">Oops, looks like the page is lost.</h2>

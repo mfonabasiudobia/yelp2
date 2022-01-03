@@ -1,7 +1,4 @@
 import {useState,useEffect,useContext} from 'react';
-import axios  from "../../helpers/axios";
-import {toast} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {useRouter} from "next/router";
 import Image from 'next/image';
 import Link from 'next/link';
