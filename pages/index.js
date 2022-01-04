@@ -62,7 +62,7 @@ const Dashboard = ({gems,cultures,categories}) => {
 
     }
 
-    
+
 
   }
 
@@ -275,22 +275,16 @@ const Dashboard = ({gems,cultures,categories}) => {
 
             <div className=" px-4 d-flex justify-content-between  w-lg-75" style={{overflow:'auto'}}>
 
-            <>
-              <div className="mx-3 text-center" >
-                <a className="fw-600 fs-14 text-white link">Restaurants</a>  &nbsp; <span className='text-secondary'> | </span> <a className="fw-600 fs-14 text-white link">Grocery stores</a>  &nbsp; <span className='text-secondary'> | </span> <a className="fw-600 fs-14 text-white link">Museums</a>  &nbsp; <span className='text-secondary'> | </span> <a className="fw-600 fs-14 text-white link">Community Centers</a> &nbsp;  <span className='text-secondary'> | </span> <a className="fw-600 fs-14 text-white link">Place of Worship</a> 
-              </div>
 
-              </>
-
-
-            {/*{categories.data.slice(0,4).map((item,index) => 
+            {categories.data.map((item,index) => 
               <>
-              <span className="mx-3" key={item.id}>
-                <Link href={`search?category_id=${item.id}`}><a className="fw-600 fs-14 text-white link">{item.name}</a></Link>
-              </span>
-              {index < 3 && <span className='text-secondary'> | </span>}
+              {item.name == 'Restaurants' || item.name.replace(/\s/g,'') == 'GroceryStore' || item.name == 'Museums' || item.name.replace(/\s/g,'') == 'CommunityCenter'  || item.name.replace(/\s/g,'') == 'Placeofworship' ? <><span className="mx-3" key={item.id}>
+                <Link href={`search?category_id=${item.id}`}><a className="fw-600 fs-14 text-white link">{item.name} </a></Link>
+              </span> <span className='text-secondary'> | </span> </> : null}
+              
               </>
-              )}*/}
+              )}
+
              {/* <span>
                 <span
                   aria-hidden="true"
