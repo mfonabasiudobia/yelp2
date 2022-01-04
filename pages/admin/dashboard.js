@@ -35,7 +35,7 @@ const Dashboard = () => {
       if(show == false){
               axios({
           method: "get",
-          url: `v1/admin/business?type=${type}`,
+          url: `${type == "ALL" ? 'v1/admin/business' : 'v1/admin/business?type=' + type}`,
           headers: {
               'Authorization':`Bearer ${adminData.token}`
               }
@@ -134,6 +134,7 @@ const Dashboard = () => {
               <form>   
                <div className="input-group input-group-md d-flex position-relative">             
                  <select className="form-select rounded-0  text-secondary fs-15" defaultValue={type} onChange={(e) => setType(e.target.value)}>
+                    <option value="ALL">All</option>
                     <option value="PENDING">Pending</option>
                     <option value="APPROVED">Approved</option>
                     <option value="DECLINED">Declined</option>
@@ -165,11 +166,11 @@ const Dashboard = () => {
                           <td>{item.phone_number}</td>  
                           <td>{item.street_address}</td> 
 
-                          <td>{type == "PENDING"  ? <span className='fw-600 fw-13 badge rounded-pill bg-warning'>PENDING</span> : type == "APPROVED" ? <span className='fw-600 fw-13 badge rounded-pill bg-success'>{type}</span> : <span className='fw-600 fw-13 badge rounded-pill bg-danger'>{type}</span> }</td> 
+                          <td>{item.live == 0  ? <span className='fw-600 fw-13 badge rounded-pill bg-warning'>PENDING</span> : item.live == 1 ? <span className='fw-600 fw-13 badge rounded-pill bg-success'>APPROVED</span> : <span className='fw-600 fw-13 badge rounded-pill bg-danger'>DECLINED</span> }</td> 
 
                          <td>  
 
-                         {type == "PENDING" || type == undefined ? <> 
+                         {item.live == 0 ? <> 
                          <button className="btn btn-sm btn-success mb-2" onClick={() => { setShow(!show); setAction({id: item.id,action:'APPROVE'})} }>Approve</button> &nbsp;
 
                          <button className="btn btn-sm btn-danger mb-2" onClick={() => { setShow(!show); setAction({id: item.id,action:'DENY'})} }>Reject</button>  </> : null} &nbsp;
