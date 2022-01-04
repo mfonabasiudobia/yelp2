@@ -275,15 +275,21 @@ const Dashboard = ({gems,cultures,categories}) => {
 
             <div className=" px-4 d-flex justify-content-between  w-lg-75" style={{overflow:'auto'}}>
 
+            <>
+              <div className="mx-3 text-center" >
+                {categories.data.map((item,index) => 
+                  <>
+                  {item.name == 'Restaurants' || item.name.replace(/\s/g,'') == 'GroceryStore' || item.name == 'Museums' || item.name.replace(/\s/g,'') == 'CommunityCenter'  || item.name.replace(/\s/g,'') == 'Placeofworship' ? <><span className="fw-600 mx-1 fs-14 text-white link" key={item.id}>
+                    <Link href={`search?category_id=${item.id}`}><a className="fw-600 fs-14 text-white link">{item.name}</a></Link>
+                  </span> {item.name.replace(/\s/g,'') != 'Placeofworship' && <span className='text-secondary'> | </span>} </> : null}
+                  </>
+                  )}
+              </div>
 
-            {categories.data.map((item,index) => 
-              <>
-              {item.name == 'Restaurants' || item.name.replace(/\s/g,'') == 'GroceryStore' || item.name == 'Museums' || item.name.replace(/\s/g,'') == 'CommunityCenter'  || item.name.replace(/\s/g,'') == 'Placeofworship' ? <><span className="mx-3" key={item.id}>
-                <Link href={`search?category_id=${item.id}`}><a className="fw-600 fs-14 text-white link">{item.name} </a></Link>
-              </span> <span className='text-secondary'> | </span> </> : null}
-              
               </>
-              )}
+
+
+           
 
              {/* <span>
                 <span
