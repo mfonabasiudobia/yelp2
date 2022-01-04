@@ -623,7 +623,7 @@ input:focus {
 .main-header,.business-header {
   height: 90vh;
   background-image:;
-  background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/db-img.jpg");
+  background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/db-img.jpg"),url("../public/images/1.jpg");
   /*background-position: center;*/
   background-size: cover;
   animation-name: slideshow;
@@ -639,13 +639,13 @@ input:focus {
 
 @keyframes slideshow {
   0% {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/1.jpg");
+    background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/1.jpg"),url("../public/images/2.jpg");
   }
   33% {
-     background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/2.jpg");
+     background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/2.jpg"),url("../public/images/3.jpg");
   }
   66% {
-     background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/3.jpg");
+     background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/3.jpg"),url("../public/images/4.jpg");
   }
   100% {
      background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/4.jpg");
