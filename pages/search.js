@@ -22,16 +22,16 @@ const WireReview = ({cultures}) => {
   
 
 
-useEffect(() => {
+// useEffect(() => {
 
-    axios({
-    url: `v1/users/business/?size=10`,
-    method:"GET",
-    headers: {
-        'Authorization':`Bearer ${userData.token}`
-    }}).then((res) => {
+//     axios({
+//     url: `v1/users/business/?size=10`,
+//     method:"GET",
+//     headers: {
+//         'Authorization':`Bearer ${userData.token}`
+//     }}).then((res) => {
 
-      setTalks(res.data.data)
+//       setTalks(res.data.data)
       
      // var page = [];
      // for (var i = 0; i <=  Math.ceil(res.data.data.length/10) - 1 ; i++) {
@@ -39,9 +39,9 @@ useEffect(() => {
      // }
      //    setPages(page);
 
-    })  
+//     })  
 
-},[]);
+// },[]);
 
 
 
@@ -65,13 +65,14 @@ useEffect(() => {
 
 
 
-              {cultures.length === 0 ? <div className="alert alert-info">No results found</div> : talks.slice(0,10).map((item,index) => 
+              {cultures.length === 0 ? <div className="alert alert-info">No results found</div> : cultures.slice(0,10).map((item,index) => 
                   <div className="row border-bottom pb-2 py-2" key={index}>
                     <div className="position-relative col-2 p-0 card card-body">
                         <Image 
-                        src={`${item.logo_url === null ? "/images/user_medium_square.png" :  item.logo_url}`}
-                        loader={() => item.logo_url === null ? "/images/user_medium_square.png" :  item.logo_url}
+                        src={`${item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url}`}
+                        loader={() => item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url}
                         className="img-fluid p-0 rouned"
+                        objectFit="cover"
                         alt=""
                         layout="fill"
                       

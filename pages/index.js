@@ -36,22 +36,33 @@ const Dashboard = ({gems,cultures,categories}) => {
   const handleFind = () => {
    
 
-     const categoryId = category !== 0 && categories.data.filter((item) => item.name == category)[0].id;
-   
+   if(category !== 0 && culture !== 0 &&  category.length != 0 && culture.length != 0){
 
-    const cultureId =  culture !== 0 && cultures.data.filter((item) => item.name == culture)[0].id;
-   
-   
-   
-    if(category !== 0 && culture !== 0){
-      router.push(`/search?category_id=${categoryId}&culture_id=${cultureId}`);
-    }else if(category !== 0){
-      router.push(`/search?category_id=${categoryId}`);
-    }else if(culture !== 0){
-      router.push(`/search?culture_id=${cultureId}`);
+       const cultureId =  culture !== 0 && cultures.data.filter((item) => item.name == culture)[0].id;
+
+       const categoryId = category !== 0 && categories.data.filter((item) => item.name == category)[0].id;
+
+       router.replace(`/search?category_id=${categoryId}&culture_id=${cultureId}`);
+
+    }else if(category !== 0  && category.length != 0){
+
+      const categoryId = category !== 0 && categories.data.filter((item) => item.name == category)[0].id;
+
+      router.replace(`/search?category_id=${categoryId}`);
+
+    }else if(culture !== 0 &&  culture.length != 0 ){
+
+       const cultureId =  culture !== 0 && cultures.data.filter((item) => item.name == culture)[0].id;
+
+       router.replace(`/search?culture_id=${cultureId}`);
+
     }else{
-      router.push(`search`);
+
+       router.replace(`search`);
+
     }
+
+    
 
   }
 
