@@ -125,23 +125,10 @@ useEffect(() => {
 
 export const getServerSideProps = async (context) => {
 
+ 
+  const cultures = await axios.get(`v1/users/business?size=10${context.query.culture_id == undefined ? '' : '&culture_id=' + context.query.culture_id}${context.query.category_id == undefined ? '' : '&category_id=' + context.query.category_id}`);
   
-  if(context.query.culture_id != undefined && context.query.category_id != undefined){
-
-    const cultures = await axios.get(`v1/users/business?size=10&category_id=${context.query.category_id}&culture_id=${context.query.culture_id}`);
-
-  }else if(context.query.culture_id != undefined && context.query.category_id == undefined){
-
-     const cultures = await axios.get(`v1/users/business?size=10&culture_id=${context.query.culture_id}`);
-
-  }else if(context.query.category_id != undefined && context.query.culture_id == undefined){
-
-     const cultures = await axios.get(`v1/users/business?size=10&category_id=${context.query.category_id}`);
-
-  }else{
-     const cultures = await axios.get(`v1/users/business?size=10`);
-  }
-  
+ 
 
   return {
     props: {
