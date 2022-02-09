@@ -14,8 +14,8 @@ import Cookie from "js-cookie";
 const Header = (props) => {
 
   const [show, setShow] = useState(false);
-  const [cultures, setCultures] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [cultures, setCultures] = useState("");
+  const [categories, setCategories] = useState("");
   const [category, setCategory] = useState(0);
   const [culture, setCulture] = useState(0);
   const router = useRouter();
@@ -83,36 +83,47 @@ const Header = (props) => {
        <nav className="navbar navbar-expand-lg bg-none py-3 m-0 top-header">
             <div className="container-fluid px-md-5">
             <Link className="navbar-brand pc fw-600" href="/"><a>
-                    <Image src="/images/logo-white-dark.png" alt="Logo"  height="45" width="100%" /></a>
-            </Link>
+                    <Image src="/images/logo-white-dark.png" alt="Logo"  height="45" width="100%" /></a> 
+            </Link> 
 
 
              <div className="navbar-nav ms-auto d-none d-md-flex align-items-center right-header">
-                   <div className="d-flex align-items-center w-100">
-                    <div className="input-group rounded-10 border">
-                      <input className="form-control border-0 text-secondary fs-15   px-3" list="categoryOptions"  placeholder="Bakery, Ballroom, Bar, Cemetary..." onChange={(e) => setCategory(e.target.value)} />
-                      <datalist id="categoryOptions">
-                        {categories.length !== 0 && categories.data.map((item) =>
-                              <option key={item.id}  value={item.name}  />
+                    <div className="input-group  position-relative border search-category-wrapper">
+                      <input className="search-category form-select border-0 text-secondary fs-15  px-3 pe-5" value={category == 0 ? '' : category}  placeholder="Bakery, Ballroom, Bar, Cemetary..." onChange={(e) => setCategory(e.target.value.length == 0 ? 0 : e.target.value)} />
+
+
+                     {category.length > 0 ?
+                      <div className="position-absolute  bg-white w-100 " style={{top:"35px",maxHeight:"40vh",zIndex:"2000",overflowY:"auto"}}>
+                        {categories.data.map((item,index) => item.name.toLowerCase().indexOf(category) >= 0 &&
+                              <button key={item.id} className="btn border-bottom d-block w-100 text-start" onClick={() => setCategory(item.name)}><strong>{index + 1}.</strong> {item.name}</button> 
                           )}
-                      </datalist>
+                      </div> : 
 
+                      <div className="position-absolute  d-none bg-white w-100 " style={{top:"35px",maxHeight:"40vh",zIndex:"2000",overflowY:"auto"}}>
 
-                      <span className="input-group-text text-light bg-white fs-25 rounded-0 border-0 fw-300">
-                          |
-                      </span>
-                    <input className="form-control border-0 text-secondary fs-15   px-3" list="cultureOptions"  placeholder="African, Asian, South American, Indian, Latin..." onChange={(e) => setCulture(e.target.value)} />
-                    <datalist id="cultureOptions">
-                      {cultures.length !== 0 && cultures.data.map((item) =>
-                            <option key={item.id}  value={item.name}   />
-                        )}
-                    </datalist>
-                      <button onClick={() => handleFind()} className="input-group-text btn-primary-color-bg rounded-end text-white rounded-0 border-0 fw-100">
-                       &nbsp;&nbsp; <i className="fas fa-search"></i>&nbsp;&nbsp;
-                      </button>
+                        { typeof categories == 'object' ?  categories.data.map((item,index) => 
+                              <button key={item.id} className="btn border-bottom d-block w-100 text-start" onClick={() => setCategory(item.name)}><strong>{index + 1}.</strong> {item.name} </button> 
+                          ) : null}
+                      </div>}
                     </div>
-                  </div>
 
+                    <div className="input-group position-relative border search-category-wrapper">
+                    <input className="search-category form-select border-0 text-secondary fs-15   px-3 pe-5" value={culture == 0 ? '' : culture}  placeholder="African, Asian, South American..."  onChange={(e) => setCulture(e.target.value.length == 0 ? 0 : e.target.value)} />
+                    {culture.length > 0 ?
+                    <div className="position-absolute   bg-white w-100 " style={{top:"35px",maxHeight:"40vh",zIndex:"2000",overflowY:"auto"}}>
+                      {cultures.data.map((item,index) => item.name.toLowerCase().indexOf(culture) >= 0 &&
+                            <button key={item.id} className="btn border-bottom d-block w-100 text-start" onClick={() => setCulture(item.name)}><strong>{index + 1}.</strong> {item.name}</button> 
+                        )}
+                    </div> : <div className="position-absolute  d-none bg-white w-100 " style={{top:"35px",maxHeight:"40vh",zIndex:"2000",overflowY:"auto"}}>
+                      {typeof cultures == 'object' ? cultures.data.map((item,index) => 
+                            <button key={item.id} className="btn border-bottom d-block w-100 text-start" onClick={() => setCulture(item.name)}><strong>{index + 1}.</strong> {item.name}</button> 
+                        ) : null}
+                    </div> }
+                    </div>
+
+                    <button onClick={() => handleFind()} className="input-group-text btn-primary-color-bg rounded-end text-white rounded-0 border-0 fw-100">
+                       &nbsp;&nbsp; <i className="fas fa-search"></i>&nbsp;&nbsp; 
+                    </button>
                 </div>
 
                 <div className="d-flex align-items-center ms-auto">

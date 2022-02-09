@@ -36,8 +36,6 @@ const loadAsyncScript = (src) => {
 
 const extractAddress = (place) => {
 
-    
-
     const address = {
         city: "",
         state: "",
@@ -306,36 +304,37 @@ setLoading(true);
 
     <div className="row g-3">
         <div className="col-sm-6">
-          <input type="text" placeholder="Name*" className="form-control form-control-lg  fs-15"  onChange={(e) => setName(e.target.value)} />
+          <input type="text" placeholder="Name*" className="form-control form-control-lg  fs-15"  onChange={(e) => setName(e.target.value)} required
+          />
       </div>
 
 
       <div className="col-sm-6">
-          <input type="text" placeholder="Street Address*" className="form-control form-control-lg  fs-15"  ref={searchInput} onChange={(e) => setStreetAddress(e.target.value)}/>
+          <input type="text" placeholder="Street Address*" className="form-control form-control-lg  fs-15"  ref={searchInput} onChange={(e) => setStreetAddress(e.target.value)} required/>
       </div>
 
       <div className="col-sm-6">
-          <input type="text" placeholder="Street Address 2" className="form-control form-control-lg  fs-15"  onChange={(e) => setStreetAddress2(e.target.value)} />
+          <input type="text" placeholder="Street Address 2" className="form-control form-control-lg  fs-15"  onChange={(e) => setStreetAddress2(e.target.value)}  />
       </div>
 
 
        <div className="col-sm-6">
-          <input type="text" placeholder="City*" value={city} className="form-control form-control-lg  fs-15"   onChange={(e) => setCity(e.target.value)}/>
+          <input type="text" placeholder="City*" value={city} className="form-control form-control-lg  fs-15"   onChange={(e) => setCity(e.target.value)} required />
       </div>
 
 
        <div className="col-sm-6">
-          <input type="text" placeholder="State*" value={state} className="form-control form-control-lg  fs-15"   onChange={(e) => setState(e.target.value)}/>
+          <input type="text" placeholder="State*" value={state} className="form-control form-control-lg  fs-15"   onChange={(e) => setState(e.target.value)} required/>
       </div>
 
       <div className="col-sm-6">
-          <input type="text" placeholder="Zip Code*" value={zipCode} className="form-control form-control-lg  fs-15"  onChange={(e) => setZipcode(e.target.value)} />
+          <input type="text" placeholder="Zip Code*" value={zipCode} className="form-control form-control-lg  fs-15"  onChange={(e) => setZipcode(e.target.value)} required/>
       </div>
 
 
 
       <div className="col-sm-6">
-          <input type="text" placeholder="Phone Number*" className="form-control form-control-lg  fs-15"  onChange={(e) => setPhoneNumber(e.target.value)} />
+          <input type="text" placeholder="Phone Number" className="form-control form-control-lg  fs-15"  onChange={(e) => setPhoneNumber(e.target.value)} required />
       </div>
 
 
@@ -350,7 +349,7 @@ setLoading(true);
 
 
        <div className="col-sm-6">
-                        <select className="form-select form-select-lg fs-15"  onChange={(e) => setCultureId(e.target.value)}>
+                        <select className="form-select form-select-lg fs-15"  onChange={(e) => setCultureId(e.target.value)} required>
                           <option >Select Culture</option>
                           {cultures.data.map((item) => <option value={item.id} key={item.id}>{item.name}</option> )}
                         </select>
@@ -358,7 +357,7 @@ setLoading(true);
 
 
     <div className="col-sm-6">
-                        <select className="form-select form-select-lg fs-15"  onChange={(e) => setCategoryId(e.target.value)}>
+                        <select className="form-select form-select-lg fs-15"  onChange={(e) => setCategoryId(e.target.value)} required>
                           <option >Select Category</option>
                           {categories.data.map((item) => <option value={item.id} key={item.id}>{item.name}</option> )}
                         </select>
@@ -385,7 +384,7 @@ setLoading(true);
 
 
     <div className="col-md-12">
-          <textarea placeholder="Description" className="form-control form-control-lg fs-13" rows="8" onChange={(e) => setDescription(e.target.value)}></textarea>
+          <textarea required placeholder="Description" className="form-control form-control-lg fs-13" rows="8" onChange={(e) => setDescription(e.target.value)}></textarea>
     </div>
 
 

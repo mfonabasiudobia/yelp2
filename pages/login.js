@@ -110,7 +110,7 @@ const Login = () => {
 
   </div>
 
-   <div  className="fs-12 d-flex justify-content-end mt-2 opacity-75">
+   <div className="fs-12 d-flex justify-content-end mt-2 opacity-75">
      <Link href="/forgot-password"><a>Forgot Password?</a></Link>
   </div>
 

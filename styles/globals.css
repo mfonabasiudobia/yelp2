@@ -854,3 +854,9 @@ svg:not(:root) {
   background: #F8F9FA !important;
 }
 
+
+.search-category:focus ~ div, .search-category-wrapper:hover > div{
+  display: block !important;
+}
+
+

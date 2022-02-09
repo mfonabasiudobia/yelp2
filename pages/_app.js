@@ -53,7 +53,7 @@ function MyApp({ Component, pageProps }) {
 
   return (<>
     <Head>
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <title>Home page | Houston Cultures</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" />
