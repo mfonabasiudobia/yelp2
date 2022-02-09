@@ -313,9 +313,21 @@ const Dashboard = ({gems,cultures,categories}) => {
                           />
 
                           <img 
-                          src={`${item.logo_url}`}
+                          src={item.logo_url}
                           alt=""
                           />
+
+                           <img 
+                          src="https://www.houstoncultures.com/wp-content/uploads/2019/06/HC_biz_Hot-Breads.jpg"
+                          alt=""
+                          />
+
+
+                           <img 
+                          src="http://www.houstoncultures.com/wp-content/uploads/2019/06/HC_biz_Hot-Breads.jpg"
+                          alt=""
+                          />
+
                     </div>
                     <div className="card card-body">
                       <div className="fw-600">
