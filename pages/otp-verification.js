@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {UserContext} from "/components/UserContext";
 import Cookie from "js-cookie";
-import {isUserLoggedIn} from "/protected/requireAuthentication";
+import {isAdminLoggedIn} from "/protected/requireAuthentication";
 toast.configure();
 
 
@@ -21,7 +21,8 @@ const VerifyAccount = (props) => {
   const [fifthCode,setFifthCode] = useState("");
   const router = useRouter();
 
-  const {setId,userData,isLoggedIn,loading,setLoading,setData,data,setIsLoggedIn,setUserData} = useContext(UserContext);
+  const {setId,userData,isAdminLoggedIn,loading,setLoading,setData,setAdminData,data,setIsAdminLoggedIn} = useContext(UserContext);
+
 
 
 
@@ -56,29 +57,19 @@ const submitVerificationCode = (e) => {
   setLoading(true);
 
   const code = firstCode + secondCode + thirdCode + fourthCode + fifthCode;
-
-   let token = Cookie.get('userData');
-   token = JSON.parse(token).data.token;
     
 
     axios({
     method: "post",
-    url: "v1/users/auth/verify",
-    data: {otp:code},
-     headers: {
-        'Authorization':`Bearer ${token}`,
-    }
+    url: "v1/admin/auth/verify",
+    data: {otp:code,email: router.query.email}
     }).then((res) => {
        if(res.data.status == true){
 
-
-           let myData = Cookie.get('userData');
-           myData = JSON.parse(myData);
-
-          Cookie.set("userData",JSON.stringify({...myData,data: {...userData,active:1}}))
-
-          setIsLoggedIn(true)
-          router.push("/");
+          Cookie.set("adminData",JSON.stringify(res.data));
+          setAdminData(JSON.parse(JSON.stringify(res.data)).data);
+          setIsAdminLoggedIn(true)
+          router.push("/admin/dashboard");
 
            
        }
@@ -98,8 +89,6 @@ const submitVerificationCode = (e) => {
     }); 
 
 }
-
-
 
 
   return (
@@ -202,6 +191,15 @@ const submitVerificationCode = (e) => {
     </>
   )
 }
+
+export const getServerSideProps = isAdminLoggedIn(async context => {
+
+  return {
+    props: {}
+  };
+
+
+},'/dashboard')
 
 
 export default VerifyAccount;
