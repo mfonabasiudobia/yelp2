@@ -69,8 +69,8 @@ const WireReview = ({cultures}) => {
                   <div className="row border-bottom pb-2 py-2" key={index}>
                     <div className="position-relative col-2 p-0 card card-body">
                         <Image 
-                        src={`${item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url}`}
-                        loader={() => item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url}
+                        src={`${item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url.replace("http://","https://")}`}
+                        loader={() => item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url.replace("http://","https://")}
                         className="img-fluid p-0 rouned"
                         objectFit="cover"
                         alt=""

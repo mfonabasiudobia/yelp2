@@ -307,7 +307,7 @@ const Dashboard = ({gems,cultures,categories}) => {
                   <div className="border rounded">
                     <div className="card">
                        <img 
-                          src={item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url}
+                          src={item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url.replace("http://","https://")}
                           alt=""
                           />
                     </div>
