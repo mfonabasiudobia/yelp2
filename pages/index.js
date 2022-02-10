@@ -307,13 +307,13 @@ const Dashboard = ({gems,cultures,categories}) => {
                   <div className="border rounded">
                     <div className="card">
                        <img 
-                          src={`${item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url}`}
+                          src={item.logo_url === null ? "/images/db-img.jpg" :  item.logo_url}
                           alt=""
                           />
                     </div>
                     <div className="card card-body">
                       <div className="fw-600">
-                        <Link href={`/biz/${item.id}`}><a>{item.name} {item.logo_url}</a></Link>
+                        <Link href={`/biz/${item.id}`}><a>{item.name}</a></Link>
                       </div>
                      {/* <Rating size={12} padding="px-1" rate={item.meta.average_rating === null ? 0 : item.meta.average_rating} id={item.id} />*/}
                       <div className="fs-14">
