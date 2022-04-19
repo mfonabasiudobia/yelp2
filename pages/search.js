@@ -67,7 +67,7 @@ const WireReview = ({business}) => {
                       </div>
                         
                        <div className="fs-14 yellow-1 mb-2">
-                        &#128293; Opened <Moment fromNow>{item.created_at}</Moment>
+                        &#128293; Listed <Moment fromNow>{item.created_at}</Moment>
                       </div>
                       <div className=" mb-2">
                         <span>{item.description.slice(0,100)}...  <Link href={`/biz/${item.id}`}><a className="fw-600 fs-14">more</a></Link></span>

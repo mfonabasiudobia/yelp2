@@ -620,15 +620,20 @@ input:focus {
 }
 
 
-.main-header,.business-header {
+
+.main-header {
   height: 90vh;
-  background-image:;
   background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url("../public/images/db-img.jpg"),url("../public/images/1.jpg");
-  /*background-position: center;*/
   background-size: cover;
   animation-name: slideshow;
   animation-iteration-count: infinite;
   animation-duration: 15s;
+}
+
+.business-header {
+  height: 90vh;
+  background-position: center;
+  background-size: cover;
 }
 
 

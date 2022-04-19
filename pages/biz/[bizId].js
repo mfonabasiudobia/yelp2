@@ -25,7 +25,7 @@ const BizId = ({business}) => {
     <Header2 />
 
 
-    <section  className="business-header">
+    <section  className="business-header" style={{backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) ), url(${business.logo_url})`}}>
 
       <div className="container d-flex justify-content-end py-md-4 py-3 flex-column  h-100">
 
@@ -38,9 +38,8 @@ const BizId = ({business}) => {
             </div>
 
             <div className="fw-600">
-            {business.review.length} reviews
+            {business.review.length} reviews 
             </div>
-
 
          </div>
 {/*

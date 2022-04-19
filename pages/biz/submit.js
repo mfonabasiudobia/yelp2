@@ -8,9 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {useRouter} from "next/router";
 import Image from 'next/image';
 import Link from 'next/link';
-import PlacesAutocomplete from 'react-places-autocomplete';
 import Head from 'next/head';
-import Script from 'next/script';
 import {UserContext} from "/components/UserContext";
 toast.configure();
 

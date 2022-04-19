@@ -359,12 +359,11 @@ const Dashboard = ({gems,cultures,categories}) => {
 
               <div className="col-6 col-md-3" key={item.id}>
                 <div className="border card card-body hover-effect bg-white d-flex flex-column justify-content-center align-items-center">
-                  <Image 
-                  src={item.image} 
-                  loader={() => item.image + "?w=25"}
-                  alt="Restaurants"  
-                  width="72" 
-                  height="72"  />
+                  <img 
+                    src={item.image} 
+                    alt="Restaurants" 
+                    objectFit="cover" 
+                    width="72"   />
                   <div className="fw-700 fs-14 mt-2">{item.name}</div>
 
                   <Link href={`search?culture_id=${item.id}`} ><a className="stretched-link"></a></Link>
@@ -374,11 +373,10 @@ const Dashboard = ({gems,cultures,categories}) => {
               )}
 
             
-
-              <div className="col-6 col-md-3">
+              <div className="col-6 col-md-3 overflow-hidden">
                 <div className="border card card-body hover-effect bg-white d-flex flex-column justify-content-center align-items-center">
-                  <Image  src="/images/More_Categories.png" alt="More Categories"  width="72" height="72"  />
-                  <div className="fw-700 fs-14 mt-2">{!cultureCollapse ? 'More' : 'Fewer'} Cultures</div>
+                  <img  src="/images/More_Categories.png" alt="More Categories"  width="72" height="52"    />
+                  <div className="fw-700 fs-14">{!cultureCollapse ? 'More' : 'Fewer'} Cultures</div>
 
                   <a className="stretched-link" role='button' onClick={() => setCultureCollapse(!cultureCollapse)}></a>
                 </div>
@@ -392,13 +390,12 @@ const Dashboard = ({gems,cultures,categories}) => {
                     <div className="card card-body">
                         <div>
 
-                  <Image 
-                  src={item.image} 
-                  loader={() => item.image + "?w=25"}
-                  alt="Restaurants"  
-                  width="25" 
-                  height="25"
-                  objectFit='cover'  />&nbsp;
+                  <img 
+                    src={item.image} 
+                    alt="Restaurants" 
+                    objectFit="cover"
+                    width="25" 
+                    objectFit='cover'  />&nbsp;
                   <Link href={`/search?culture_id=${item.id}`}><a className="fw-600">{item.name}</a></Link></div>
                     </div>
                   </div>

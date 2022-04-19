@@ -8,9 +8,17 @@ const Footer = () => {
     <div className="row fs-14">
       <div   className="col-6">
         <p><strong>About</strong></p>
-        <p><a href="#">About Us</a></p>
-        <p><a href="#">Contact us</a></p>        
+        <p>
+          <Link href="https://brass-muskmelon-b8c.notion.site/Privacy-Policy-3561b06c58854050aba79e313dcbc4eb">
+            <a target="_blank">Privacy Policy</a>
+          </Link>
+        </p>
+        <Link href="https://www.notion.so/Terms-of-Service-5114255349fe45cab8cc35530ee1580a">
+            <a target="_blank">Terms of Service</a>
+          </Link>      
       </div>
+
+
 
 
 
