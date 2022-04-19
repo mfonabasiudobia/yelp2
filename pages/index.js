@@ -410,14 +410,16 @@ const Dashboard = ({gems,cultures,categories}) => {
 
      <section className="py-5">
           <div className="container">
-            <h2 className="pc fs-24 fw-700 text-center">Download the Houston Cultures App</h2>
+            <h2 className="pc fs-24 fw-700 text-center">
+              <a href="https://linktr.ee/HoustonCultures" target="_blank">Download the Houston Cultures App</a>
+            </h2>
             <p className="text-center pc fs-18">Available on IOS and Android</p>
 
             <div className="row">
               <div className="col-md-6">
                 <div className="border-0 card card-body hover-effect bg-white d-flex flex-column justify-content-center align-items-center">
                   <Image  src="/images/houston_cultures_app.png" alt="Houson Cultures app"  width="1000" height="1000" />
-                  <a href="" className="stretched-link"></a>
+                  <a href="https://linktr.ee/HoustonCultures" target="_blank" className="stretched-link"></a>
                 </div>
               </div>
 
