@@ -411,7 +411,7 @@ const Dashboard = ({gems,cultures,categories}) => {
      <section className="py-5">
           <div className="container">
             <h2 className="pc fs-24 fw-700 text-center">
-              <a href="https://linktr.ee/HoustonCultures" target="_blank">Download the Houston Cultures App</a>
+              <a href="https://linktr.ee/HoustonCultures" target="_blank" className="pc text-decoration-none">Download the Houston Cultures App</a>
             </h2>
             <p className="text-center pc fs-18">Available on IOS and Android</p>
 
