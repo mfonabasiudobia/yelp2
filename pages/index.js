@@ -263,18 +263,22 @@ const Dashboard = ({gems,cultures,categories}) => {
 
             <div className=" px-4 d-flex justify-content-between  w-lg-75" style={{overflow:'auto'}}>
 
-            <>
               <div className="mx-3 text-center" >
                 {categories.data.map((item,index) => 
-                  <>
-                  {item.id == 19 || item.id == 10 || item.id == 20 || item.id == 7  || item.id == 21 ? <><span className="fw-600 mx-1 fs-14 text-white link" key={item.id}>
-                    <Link href={`search?category_id=${item.id}`}><a className="fw-600 fs-14 text-white link">{item.name}</a></Link>
-                  </span> {item.name.replace(/\s/g,'') != 'Placeofworship' && <span className='text-secondary'> | </span>} </> : null}
-                  </>
-                  )}
+                  <span key={index}>
+                  {item.id == 19 || item.id == 10 || item.id == 20 || item.id == 7  || item.id == 21 ? 
+                      <>
+                      <span className="fw-600 mx-1 fs-14 text-white link" >
+                        <Link href={`search?category_id=${item.id}`}>
+                          <a className="fw-600 fs-14 text-white link">{item.name}</a>
+                      </Link>
+                      </span>
+                      {item.name.replace(/\s/g,'') != 'Placeofworship' && <span className='text-secondary'> | </span>}
+                      </>
+                       : null}
+                     
+                  </span>)}
               </div>
-
-              </>
             </div>
 
          
@@ -290,12 +294,7 @@ const Dashboard = ({gems,cultures,categories}) => {
               Hidden Gems
             </h1>
 
-
-            
-
             <div className="row gx-5 gy-4">
-
-
             {gems.data.map((item) =>
               <div className="col-md-4" key={item.id}>
                 <div>
@@ -411,7 +410,9 @@ const Dashboard = ({gems,cultures,categories}) => {
      <section className="py-5">
           <div className="container">
             <h2 className="pc fs-24 fw-700 text-center">
-              <a href="https://linktr.ee/HoustonCultures" target="_blank" className="pc text-decoration-none">Download the Houston Cultures App</a>
+            <Link href="https://linktr.ee/HoustonCultures">
+                <a className="pc text-decoration-none" target="_blank">Download the Houston Cultures App</a>
+            </Link>
             </h2>
             <p className="text-center pc fs-18">Available on IOS and Android</p>
 
@@ -419,7 +420,9 @@ const Dashboard = ({gems,cultures,categories}) => {
               <div className="col-md-6">
                 <div className="border-0 card card-body hover-effect bg-white d-flex flex-column justify-content-center align-items-center">
                   <Image  src="/images/houston_cultures_app.png" alt="Houson Cultures app"  width="1000" height="1000" />
-                  <a href="https://linktr.ee/HoustonCultures" target="_blank" className="stretched-link"></a>
+                  <Link href="https://linktr.ee/HoustonCultures" >
+                      <a className="stretched-link" target="_blank"></a>
+                  </Link>
                 </div>
               </div>
 

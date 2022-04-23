@@ -7,7 +7,11 @@ const Footer = () => {
 
     <div className="row fs-14">
       <div   className="col-6">
-        <p><strong>About</strong></p>
+        <p>
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </p>
         <p>
           <Link href="https://brass-muskmelon-b8c.notion.site/Privacy-Policy-3561b06c58854050aba79e313dcbc4eb">
             <a target="_blank">Privacy Policy</a>
@@ -18,10 +22,6 @@ const Footer = () => {
           </Link>      
       </div>
 
-
-
-
-
       <div   className=" col-6">
         <p><strong>Socials</strong></p>
 
@@ -31,8 +31,6 @@ const Footer = () => {
 
       
       </div>
-
-
 
 
      <br />
