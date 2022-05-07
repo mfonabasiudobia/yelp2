@@ -21,19 +21,13 @@ const WireReview = ({business}) => {
   const [pages,setPages] = useState([]);
   const [currentPage,setCurrentPage] = useState(0);
   const {setId,userData,isLoggedIn,loading,setLoading,setData,data} = useContext(UserContext);
-  
-
-
 
    return (<>
     <div className="page-wrapper">
    
       <Header2 />
 
-         
-
-
-    <section className="py-5">
+   <section className="py-5">
           <div className="container">
            
             <div className="row gy-4 d-flex justify-content-center">
@@ -114,11 +108,15 @@ const WireReview = ({business}) => {
 
 export const getServerSideProps = async (context) => {
 
- 
-  const business = await axios.get(`v1/users/business?${context.query.culture_id == undefined ? '' : '&culture_id=' + context.query.culture_id}${context.query.category_id == undefined ? '' : '&category_id=' + context.query.category_id}`);
-  
- 
+  const { culture_id, category_id } = context.query;
 
+  const business = await axios.get(`v1/users/business/search`, {
+    params : {
+      culture_id : culture_id,
+      category_id : category_id
+    }
+  });
+  
   return {
     props: {
       business : business.data.data
