@@ -3,8 +3,8 @@ import Link from 'next/link';
 
 const Header = () => {
 	return (
-	<header className="primary-color-bg text-center d-flex justify-content-center align-items-center">
-      <Link href="/"><a><img src="/images/logo_white_h.png" alt="" objectFit="cover" height="100" width="100%" /></a></Link>
+	<header className="primary-color-bg text-center d-flex justify-content-center align-items-center py-1">
+      <Link href="/"><a><img src="/images/logo_white_h.png" alt="" objectFit="cover" style={{width: '100px',height:'auto'}}  /></a></Link>
     </header>)
 }
 

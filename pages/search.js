@@ -81,7 +81,7 @@ const WireReview = ({business}) => {
 
 
 
-            <nav className="my-3">
+            <nav className={`my-3 ${business.length == 0 && 'd-none'}`}>
               <ul className="pagination justify-content-center">
                 <li className={`page-item ${business.slice(currentPage - 10, currentPage - 20).length === 0 ? 'disabled': null }`}>
                   <a className="page-link" href="#"  aria-disabled="true" onClick={() => setCurrentPage(currentPage - 10)}>Previous</a>
@@ -115,11 +115,11 @@ export const getServerSideProps = async (context) => {
       culture_id : culture_id,
       category_id : category_id
     }
-  });
+  }).catch(console.log);
   
   return {
     props: {
-      business : business.data.data
+      business : business ? business.data.data : [],
     },
   };
 };
