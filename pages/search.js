@@ -110,8 +110,9 @@ export const getServerSideProps = async (context) => {
 
   const { culture_id, category_id } = context.query;
 
-  const business = await axios.get(`v1/users/business/search`, {
+  const business = await axios.get(`v1/users/business`, {
     params : {
+      size: 50,
       culture_id : culture_id,
       category_id : category_id
     }
