@@ -291,7 +291,7 @@ const Dashboard = ({gems,cultures,categories}) => {
         <section className="py-4">
           <div className="container">
             <h1 className="pc text-center fs-21 fw-700 mb-4">
-              Hidden Gems
+              Hidden Gems 
             </h1>
 
             <div className="row gx-5 gy-4">

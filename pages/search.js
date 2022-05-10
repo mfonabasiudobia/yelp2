@@ -13,7 +13,7 @@ import Moment from 'react-moment';
 import {UserContext} from "/components/UserContext";
 toast.configure();
 
-const WireReview = ({business}) => {
+const WireReview = ({ business }) => {
 
 
   const [talks,setTalks] = useState([]);
@@ -109,15 +109,15 @@ const WireReview = ({business}) => {
 export const getServerSideProps = async (context) => {
 
   const { culture_id, category_id } = context.query;
-
-  const business = await axios.get(`v1/users/business`, {
-    params : {
-      size: 50,
-      culture_id : culture_id,
-      category_id : category_id
-    }
-  }).catch(console.log);
-  
+      
+       const business = await axios.get(culture_id  > 0 && category_id > 0 ? `v1/users/business/search` : `v1/users/business`, {
+            params : {
+              culture_id : culture_id,
+              category_id : category_id
+            }
+          }).catch(console.log);
+        
+ 
   return {
     props: {
       business : business ? business.data.data : [],
