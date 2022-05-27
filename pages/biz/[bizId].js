@@ -33,8 +33,8 @@ const BizId = ({business}) => {
           <div>
           <h1 className="fw-900 lh-1">{business.name} </h1>
             <div>
-
-           <Rating size={12} padding="px-1" rate={5} id={business.id} />
+          
+           <Rating size={12} padding="px-1" rate={business.average_rating == null ? 0 : Math.round(business.average_rating)} id={business.id} />
             </div>
 
             <div className="fw-600">
@@ -152,9 +152,8 @@ const BizId = ({business}) => {
                   </div>
 
                   <div className="col-6 d-flex justify-content-center flex-column">
-                   <Rating size={12} padding="px-1" rate={business.id} id={business.id} />
+                   <Rating size={12} padding="px-1" rate={business.average_rating == null ? 0 : Math.round(business.average_rating)} id={business.id} />
                       <Link href={isLoggedIn ? `/writeareview/biz/${business.id}` : '/login'}><a className="fw-600 fs-12">Start your review of {business.name}</a></Link>
-
                   </div>
 
             </div>
@@ -166,7 +165,8 @@ const BizId = ({business}) => {
                     <div className="col-12 d-flex align-items-start">
                    
                         <Image 
-                        src="/images/user_medium_square.png"
+                        src={`${item.image_url === null ? "/images/user_medium_square.png" :  item.image_url}`}
+                        loader={() => item.image_url === null ? "/images/user_medium_square.png" :  item.image_url}
                         className="img-fluid p-0 rounded-circle"
                         alt=""
                         height="80"

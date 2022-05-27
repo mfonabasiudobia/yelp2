@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   const [isLoggedIn,setIsLoggedIn] = useState(false);
   const [isAdminLoggedIn,setIsAdminLoggedIn] = useState(false);
   const [loading,setLoading] = useState(false);
-  const [rating,setRating] = useState(5);
+  const [rating,setRating] = useState(0);
 
   useEffect(() => { 
     const user = Cookie.get("userData");

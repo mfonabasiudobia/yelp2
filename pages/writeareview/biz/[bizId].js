@@ -69,17 +69,39 @@ useEffect(()=> {
 },[bizId,loading])
 
 
+const convertBase64 = (file) => {
+    
+    return new Promise((resolve, reject) => {
+
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      }
 
 
-const submitReview = (e) => {
+      fileReader.onerror = (error) => {
+        reject()
+      }
 
+
+      })
+
+  }
+
+const submitReview = async (e) => {
     e.preventDefault();
+
+    if(rating == 0) return toast.error("Please choose a rating",{theme: "colored"});
+
+    const base64Logo = image && await convertBase64(image);
 
   setLoading(true);
   axios({
   method: "POST",
   url: "v1/users/review/",
-  data: {business_id:bizId,comment:message,rating:rating,image:image},
+  data: {business_id:bizId,comment:message,rating:rating,image: image && base64Logo.split(",")[1]},
   headers: {
         'Authorization':`Bearer ${userData.token}`
   }
@@ -146,7 +168,7 @@ const submitReview = (e) => {
 
  <div className="col-12">
           <label className="small fw-600">Attach Photo</label>
-          <input type="file" placeholder="Attach Photo" className="form-control  fs-14"  onChange={(e) => setImage(e.target.value)} />
+          <input type="file" placeholder="Attach Photo" className="form-control  fs-14"  onChange={(e) => setImage(e.target.files[0])} />
 </div>
 
 

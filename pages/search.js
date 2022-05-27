@@ -56,8 +56,8 @@ const WireReview = ({ business }) => {
                         <Link href={`/biz/${item.id}`}><a className="fw-600 text-dark">{item.name}</a></Link>
                       </div>
                       <div className="d-flex align-items-center mb-2">
-                      <Rating size={12} padding="px-1" rate={item.id} id={item.id} />
-                        <div className="fs-11">157</div>
+                      <Rating size={12} padding="px-1" rate={item.average_rating == null ? 0 : Math.round(item.average_rating)} id={item.id} />
+                        <div className="fs-11">{item.review.length} reviews</div>
                       </div>
                         
                        <div className="fs-14 yellow-1 mb-2">

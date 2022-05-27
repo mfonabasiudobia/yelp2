@@ -171,8 +171,8 @@ useEffect(() => {
                         <span>{index + 1}. {item.name}</span>
                       </div>
                       <div className="d-flex align-items-center">
-                      <Rating size={12} padding="px-1" rate={item.id} id={item.id} />
-                        <div className="fs-11">157 reviews</div>
+                      <Rating size={12} padding="px-1" rate={item.average_rating == null ? 0 : Math.round(item.average_rating)} id={item.id} />
+                        <div className="fs-11">{item.review.length} reviews</div>
                       </div>
           <div className="submit mt-3">
              {<Link href={`${isLoggedIn ? '/writeareview/biz/' + item.id : '/login'}`}><a className={`btn fs-14 border fw-600 btn-primary-color-bg text-white`}><i className="fas fa-star"></i> Write A Review </a></Link>}
